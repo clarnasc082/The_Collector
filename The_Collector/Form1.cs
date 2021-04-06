@@ -124,7 +124,7 @@ namespace The_Collector
                 }
 
                 for (int i = 0; i < astroidYList.Count(); i++)
-                {
+                { 
                     e.Graphics.FillRectangle(whiteBrush, astroidXList[i], astroidYList[i], astroidWidth, astroidHeight);
                 }
             }
