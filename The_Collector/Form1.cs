@@ -55,7 +55,7 @@ namespace The_Collector
         int astroidHeight = 10;
 
         string difficulty;  
-
+         
         Random randGen = new Random();
         int randValue = 0;
 
