@@ -11,22 +11,24 @@ using System.Media;
 
 namespace The_Collector
 {
-    public partial class Form1 : Form
+    public partial class form1 : Form
     {
-        string gameState = "waiting"; 
+        string gameState = "waiting";
 
         //ball
+        Image diamond = Properties.Resources.diamond_icon;
         int ballX;
         int ballY;
-        int ballSpeed;
-        int ballColour;
-        int ballSize = 10;
-        
+        //int ballSpeed;
+        //int ballColour;
+        int ballSize = 30;
+
         //character
+        Image rocket = Properties.Resources.rocket_icon;
         int characterX = 350;
         int characterY = 400;
-        int characterWidth = 20;
-        int characterHeight = 20;
+        int characterWidth = 35;
+        int characterHeight = 35;
         int characterXSpeed = 7;
         int characterYSpeed = 7;
 
@@ -50,7 +52,7 @@ namespace The_Collector
 
         List<int> astroidSpeedXList = new List<int>();
         List<int> astroidSpeedYList = new List<int>();
-        List<string> astroidColourList = new List<string>(); /////////////////////////////////////////
+        //List<string> astroidColourList = new List<string>(); /////////////////////////////////////////
         int astroidWidth = 10;
         int astroidHeight = 10;
 
@@ -66,7 +68,7 @@ namespace The_Collector
         SolidBrush whiteBrush = new SolidBrush(Color.White);
         SolidBrush greenBrush = new SolidBrush(Color.Green);
 
-        public Form1()
+        public form1()
         {
             InitializeComponent();
         }
@@ -81,6 +83,11 @@ namespace The_Collector
 
             invaderSpeedXList.Clear();
             invaderSpeedYList.Clear();
+            astroidSpeedXList.Clear();
+            astroidSpeedYList.Clear();
+            astroidXList.Clear();
+            astroidYList.Clear();
+
             time = 600;
             score = 0;
             ballX = 50;
@@ -115,9 +122,9 @@ namespace The_Collector
                 scoreLabel.Text = $"Score: {score}";
                 timeLabel.Text = $"Time left: {time}";
 
-                e.Graphics.FillRectangle(blueBrush, characterX, characterY, characterWidth, characterHeight);
-                e.Graphics.FillRectangle(greenBrush, ballX, ballY, ballSize, ballSize);
-
+                //e.Graphics.FillRectangle(blueBrush, characterX, characterY, characterWidth, characterHeight);
+                e.Graphics.DrawImage(diamond, ballX, ballY, ballSize, ballSize);
+                e.Graphics.DrawImage(rocket, characterX, characterY, characterWidth, characterHeight);
                 for (int i = 0; i < invaderYList.Count(); i++)
                 {
                     e.Graphics.FillRectangle(whiteBrush, invaderXList[i], invaderYList[i], invaderWidth, invaderHeight);
@@ -241,7 +248,7 @@ namespace The_Collector
                     invaderXList.Add(randGen.Next(0, this.Width - 50));
                     invaderYList.Add(10);
                     invaderSpeedXList.Add(0);
-                    invaderSpeedYList.Add(randGen.Next(2, 10));
+                    invaderSpeedYList.Add(randGen.Next(2, 10));                
                 }
 
                 invaderColourList.Add("white");
@@ -315,6 +322,7 @@ namespace The_Collector
                 gameState = "over";
                 characterY = 400;
                 characterX = 350;
+
             }
 
             //if player reaches a score of 3
@@ -332,7 +340,9 @@ namespace The_Collector
 
         private void easyButton_Click(object sender, EventArgs e)
         {
+            GameInitialize();
             gameState = "running";
+            difficulty = "easy";
             easyButton.Visible = false;
             mediumButton.Visible = false;
             hardButton.Visible = false;
@@ -344,6 +354,7 @@ namespace The_Collector
 
         private void mediumButton_Click(object sender, EventArgs e)
         {
+            GameInitialize();
             gameState = "running";
             easyButton.Visible = false;
             mediumButton.Visible = false;
@@ -357,6 +368,7 @@ namespace The_Collector
 
         private void hardButton_Click(object sender, EventArgs e)
         {
+            GameInitialize();
             gameState = "running";
             easyButton.Visible = false;
             mediumButton.Visible = false;
