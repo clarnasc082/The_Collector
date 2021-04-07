@@ -111,10 +111,19 @@
     <None Include="Resources\Goodstuff-No-Nonsense-Free-Space-Rocket.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\diamond-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rocket-icon2.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\rocket-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\diamond-icon.png" />
+    <None Include="Resources\rocket-icon4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rocket-icon3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

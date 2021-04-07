@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
-
+//Clara Nascu, April 7, 2021
 namespace The_Collector
 {
     public partial class form1 : Form
@@ -19,12 +19,11 @@ namespace The_Collector
         Image diamond = Properties.Resources.diamond_icon;
         int ballX;
         int ballY;
-        //int ballSpeed;
-        //int ballColour;
         int ballSize = 30;
 
         //character
-        Image rocket = Properties.Resources.rocket_icon;
+        Image rocketUp = Properties.Resources.rocket_icon2;
+
         int characterX = 350;
         int characterY = 400;
         int characterWidth = 35;
@@ -52,7 +51,7 @@ namespace The_Collector
 
         List<int> astroidSpeedXList = new List<int>();
         List<int> astroidSpeedYList = new List<int>();
-        //List<string> astroidColourList = new List<string>(); /////////////////////////////////////////
+
         int astroidWidth = 10;
         int astroidHeight = 10;
 
@@ -122,9 +121,8 @@ namespace The_Collector
                 scoreLabel.Text = $"Score: {score}";
                 timeLabel.Text = $"Time left: {time}";
 
-                //e.Graphics.FillRectangle(blueBrush, characterX, characterY, characterWidth, characterHeight);
                 e.Graphics.DrawImage(diamond, ballX, ballY, ballSize, ballSize);
-                e.Graphics.DrawImage(rocket, characterX, characterY, characterWidth, characterHeight);
+                e.Graphics.DrawImage(rocketUp, characterX, characterY, characterWidth, characterHeight);
                 for (int i = 0; i < invaderYList.Count(); i++)
                 {
                     e.Graphics.FillRectangle(whiteBrush, invaderXList[i], invaderYList[i], invaderWidth, invaderHeight);
@@ -270,21 +268,25 @@ namespace The_Collector
             if (upArrowDown == true && characterY > 0)
             {
                 characterY -= characterYSpeed;
+                rocketUp = Properties.Resources.rocket_icon2;
             }
 
             if (downArrowDown == true && characterY < this.Height - characterHeight)
             {
                 characterY += characterYSpeed;
+                rocketUp = Properties.Resources.rocket_icon4;
             }
 
             if (leftArrowDown == true && characterX > 0)
             {
                 characterX -= characterXSpeed;
+                rocketUp = Properties.Resources.rocket_icon3;
             }
 
             if (rightArrowDown == true && characterX < this.Width - characterWidth)
             {
                 characterX += characterXSpeed;
+                rocketUp = Properties.Resources.rocket_icon;
             }
 
 
